@@ -2,11 +2,15 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
+const cors = require("cors"); // Import the cors middleware
 app.use(express.json());
 const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
 const doctorRoute = require("./routes/doctorsRoute");
 const path = require("path");
+
+// Use CORS middleware
+app.use(cors());
 
 app.use("/api/user", userRoute);
 app.use("/api/admin", adminRoute);
